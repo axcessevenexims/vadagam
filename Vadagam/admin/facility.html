@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Facility Gallery - AXCES SEVEN EXIMS Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- SIDEBAR NAVIGATION -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-header">
+      <img src="../assets/images/logo.png" alt="AXCES SEVEN EXIMS Logo" class="sidebar-logo" onerror="this.src='../assets/images/moulika_logo.png'">
+      <div class="sidebar-brand-text">
+        <h2>AXCES SEVEN</h2>
+        <p>Export Admin</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-group-title">Main Navigation</div>
+      <a href="index.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>Dashboard</span>
+      </a>
+
+      <div class="nav-group-title">Catalog & Export</div>
+      <a href="products.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        <span>All Products</span>
+        <span class="sidebar-badge" id="sideProdCount">30</span>
+      </a>
+      <a href="products.html?type=food" class="sidebar-link" style="padding-left:28px;">
+        <span style="font-size:12px;">🥗 Food Products</span>
+        <span class="sidebar-badge" style="background:#e0f2fe; color:#0369a1;">15</span>
+      </a>
+      <a href="products.html?type=non-food" class="sidebar-link" style="padding-left:28px;">
+        <span style="font-size:12px;">📦 Non-Food Products</span>
+        <span class="sidebar-badge" style="background:#fae8ff; color:#86198f;">15</span>
+      </a>
+
+      <div class="nav-group-title">Leads & Operations</div>
+      <a href="inquiries.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>Export Inquiries</span>
+        <span class="sidebar-badge inquiry-new-count" style="background:#ef4444; color:#fff;">1</span>
+      </a>
+      <a href="facility.html" class="sidebar-link active">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        <span>Facility & Factory</span>
+      </a>
+      <a href="certificates.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        <span>Certifications</span>
+      </a>
+
+      <div class="nav-group-title">Configuration</div>
+      <a href="settings.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Company Settings</span>
+      </a>
+      <a href="../index.html" target="_blank" class="sidebar-link" style="color:var(--admin-accent);">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        <span>View Live Website ↗</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">A</div>
+        <div class="user-info">
+          <div class="user-name">Admin User</div>
+          <div class="user-role">Super Admin</div>
+        </div>
+      </div>
+      <button class="btn-logout btn-logout-action" title="Log Out">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <main class="admin-main">
+    <!-- TOPBAR -->
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="page-breadcrumb">
+          <span>AXCES SEVEN EXIMS</span>
+          <span>/</span>
+          <span class="current">Warehouse & Packaging Facility</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="btn btn-accent" id="btnOpenAddFacility">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <span>+ Add Station Photo</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="admin-content">
+      <div class="page-header">
+        <div class="page-header-title">
+          <h1>Warehouse & Packaging Facility (3x5 Grid)</h1>
+          <p>Manage the 15 warehouse stations and packaging line photos displayed on the public facility page.</p>
+        </div>
+      </div>
+
+      <!-- 3x5 FACILITY GRID -->
+      <div class="facility-admin-grid" id="facilityGrid">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- EDIT / ADD FACILITY MODAL -->
+  <div class="modal-backdrop" id="facilityModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title" id="facModalTitle">Edit Facility Station</div>
+        <button class="modal-close" id="btnCloseFacModal">&times;</button>
+      </div>
+      <form id="facForm">
+        <div class="modal-body">
+          <input type="hidden" id="formFacId">
+
+          <div class="form-group">
+            <label class="form-label" for="formFacTitle">Station Title / Caption <span class="req">*</span></label>
+            <input type="text" id="formFacTitle" class="form-control" placeholder="e.g. Package Sorting & Inspection" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="formFacDesc">Description / Notes</label>
+            <input type="text" id="formFacDesc" class="form-control" placeholder="e.g. Modern sorting conveyors with automated weight verification">
+          </div>
+
+          <!-- IMAGE UPLOAD -->
+          <div class="form-group">
+            <label class="form-label">Station Image</label>
+            <div class="image-upload-wrap" id="facDropZone">
+              <img id="facImgPreview" class="upload-preview" src="../assets/images/warehouse-1.jpg" alt="Preview">
+              <div id="facUploadPrompt">
+                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--admin-text-muted); margin-bottom:6px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <div style="font-size:12.5px; font-weight:600; color:var(--admin-primary);">Click to Upload New Photo</div>
+              </div>
+              <input type="file" id="facImageFile" accept="image/*" style="display:none;">
+            </div>
+
+            <div style="margin-top:10px;">
+              <label class="form-label" style="font-size:11.5px; color:var(--admin-text-muted);">Or Choose Image Preset:</label>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <span class="preset-chip btn-preset" data-img="../assets/images/warehouse-1.jpg">Warehouse 1</span>
+                <span class="preset-chip btn-preset" data-img="../assets/images/warehouse-2.jpg">Warehouse 2</span>
+                <span class="preset-chip btn-preset" data-img="../assets/images/warehouse-3.jpg">Warehouse 3</span>
+              </div>
+              <input type="hidden" id="formFacImageUrl" value="../assets/images/warehouse-1.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btnCancelFacModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Station</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async function() {
+      let cachedFacilities = [];
+      const grid = document.getElementById("facilityGrid");
+      const modal = document.getElementById("facilityModal");
+      const form = document.getElementById("facForm");
+      const fileInput = document.getElementById("facImageFile");
+      const dropZone = document.getElementById("facDropZone");
+      const imgPreview = document.getElementById("facImgPreview");
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      async function loadFacility() {
+        grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:32px; color:#64748b;">Loading facility stations from Supabase...</div>`;
+        try {
+          cachedFacilities = await window.AppSupabase.facility.getAll();
+          renderFacility();
+        } catch (err) {
+          console.error("Facility loading error:", err);
+          grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:32px; color:#ef4444;">Failed to load facility stations.</div>`;
+        }
+      }
+
+      function renderFacility() {
+        grid.innerHTML = "";
+
+        if (cachedFacilities.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:32px; color:#64748b;">No facility stations found. Click "Add Station" to create one.</div>`;
+          return;
+        }
+
+        cachedFacilities.forEach((item, index) => {
+          const card = document.createElement("div");
+          card.className = "facility-admin-card";
+          card.innerHTML = `
+            <div style="position:relative;">
+              <img src="${adminImgPath(item.image)}" alt="${item.title}" onerror="this.src='../assets/images/warehouse-1.jpg'">
+              <span style="position:absolute; top:8px; left:8px; background:rgba(11,47,53,0.85); color:#fff; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">#${index + 1}</span>
+            </div>
+            <div style="font-weight:700; color:var(--admin-primary); font-size:13.5px; margin-bottom:2px;">${item.title}</div>
+            <div style="font-size:11.5px; color:var(--admin-text-muted); margin-bottom:12px;">${item.description || 'Standard export station'}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #f1f5f9; padding-top:8px;">
+              <button class="btn btn-secondary btn-sm btn-edit-fac" data-id="${item.id}">Edit Photo</button>
+              <button class="btn btn-danger btn-sm btn-del-fac" data-id="${item.id}">Delete</button>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        document.querySelectorAll(".btn-edit-fac").forEach(btn => {
+          btn.addEventListener("click", () => openEditModal(btn.getAttribute("data-id")));
+        });
+
+        document.querySelectorAll(".btn-del-fac").forEach(btn => {
+          btn.addEventListener("click", () => deleteStation(btn.getAttribute("data-id")));
+        });
+      }
+
+      dropZone.addEventListener("click", () => fileInput.click());
+      fileInput.addEventListener("change", function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(evt) {
+            imgPreview.src = evt.target.result;
+            imgPreview.classList.add("show");
+            document.getElementById("formFacImageUrl").value = evt.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      document.querySelectorAll(".btn-preset").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const img = btn.getAttribute("data-img");
+          imgPreview.src = adminImgPath(img);
+          imgPreview.classList.add("show");
+          document.getElementById("formFacImageUrl").value = img;
+        });
+      });
+
+      function openEditModal(id) {
+        const item = cachedFacilities.find(f => f.id === id);
+        if (!item) return;
+
+        document.getElementById("facModalTitle").textContent = `Edit Station #${cachedFacilities.indexOf(item) + 1}: ${item.title}`;
+        document.getElementById("formFacId").value = item.id;
+        document.getElementById("formFacTitle").value = item.title;
+        document.getElementById("formFacDesc").value = item.description || "";
+        document.getElementById("formFacImageUrl").value = item.image;
+        imgPreview.src = adminImgPath(item.image);
+        imgPreview.classList.add("show");
+
+        modal.classList.add("active");
+      }
+
+      function openAddModal() {
+        form.reset();
+        document.getElementById("facModalTitle").textContent = "Add Facility Station";
+        document.getElementById("formFacId").value = "";
+        const defaultImg = "assets/images/warehouse-1.jpg";
+        document.getElementById("formFacImageUrl").value = defaultImg;
+        imgPreview.src = adminImgPath(defaultImg);
+        imgPreview.classList.add("show");
+        modal.classList.add("active");
+      }
+
+      async function deleteStation(id) {
+        if (confirm("Are you sure you want to delete this facility photo from Supabase?")) {
+          try {
+            await window.AppSupabase.facility.delete(id);
+            showToast("Facility station deleted.", "info");
+            await loadFacility();
+          } catch (err) {
+            console.error("Delete facility error:", err);
+            showToast(`Failed to delete station: ${err.message}`, "error");
+          }
+        }
+      }
+
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const id = document.getElementById("formFacId").value || `FAC-${Date.now().toString().slice(-4)}`;
+        const title = document.getElementById("formFacTitle").value.trim();
+        const description = document.getElementById("formFacDesc").value.trim();
+        const image = document.getElementById("formFacImageUrl").value || "assets/images/warehouse-1.jpg";
+
+        const origBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Saving to Supabase...";
+
+        try {
+          await window.AppSupabase.facility.save({
+            id,
+            title,
+            description,
+            image,
+            display_order: cachedFacilities.length + 1
+          });
+          showToast(`Station "${title}" saved to Supabase!`, "success");
+          modal.classList.remove("active");
+          await loadFacility();
+        } catch (err) {
+          console.error("Save facility error:", err);
+          showToast(`Failed to save station: ${err.message}`, "error");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = origBtnText;
+        }
+      });
+
+      document.getElementById("btnOpenAddFacility").addEventListener("click", openAddModal);
+      document.getElementById("btnCloseFacModal").addEventListener("click", () => modal.classList.remove("active"));
+      document.getElementById("btnCancelFacModal").addEventListener("click", () => modal.classList.remove("active"));
+
+      await loadFacility();
+    });
+  </script>
+</body>
+</html>
