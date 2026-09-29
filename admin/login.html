@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - AXCES SEVEN EXIMS</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #072b31 0%, #0b3d45 50%, #165b67 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 420px;
+      padding: 36px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #0b3d45, #c4d728);
+    }
+    .login-logo-wrap {
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .login-logo {
+      height: 56px;
+      max-width: 220px;
+      object-fit: contain;
+    }
+    .login-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0b3d45;
+      margin-bottom: 4px;
+    }
+    .login-subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 26px;
+    }
+    .login-form {
+      text-align: left;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      background: #0b3d45;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+    .login-btn:hover {
+      background: #072b31;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(11, 61, 69, 0.2);
+    }
+    .back-to-site {
+      margin-top: 20px;
+      font-size: 12.5px;
+      color: #64748b;
+    }
+    .back-to-site a {
+      color: #0b3d45;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-to-site a:hover {
+      text-decoration: underline;
+    }
+    .login-error {
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      margin-bottom: 16px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="login-logo-wrap">
+      <img src="../assets/images/logo.png" alt="AXCES SEVEN EXIMS Logo" class="login-logo" onerror="this.src='../assets/images/moulika_logo.png'">
+    </div>
+    <h1 class="login-title">AXCES SEVEN EXIMS</h1>
+    <p class="login-subtitle">Supabase Export Control & Admin Dashboard</p>
+
+    <div id="loginErrorMsg" class="login-error"></div>
+
+    <form class="login-form" id="adminLoginForm">
+      <div class="form-group">
+        <label class="form-label" for="adminUsername">Admin Email / Username</label>
+        <input type="text" id="adminUsername" class="form-control" placeholder="admin@a7exims.com or admin" required autofocus>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="adminPassword">Password</label>
+        <input type="password" id="adminPassword" class="form-control" placeholder="Enter password" required>
+      </div>
+
+      <button type="submit" class="login-btn" id="loginSubmitBtn">
+        Sign In with Supabase Auth
+      </button>
+    </form>
+
+    <div class="back-to-site">
+      <a href="../index.html">← Back to Main Public Website</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async function() {
+      const form = document.getElementById("adminLoginForm");
+      const userInput = document.getElementById("adminUsername");
+      const passInput = document.getElementById("adminPassword");
+      const submitBtn = document.getElementById("loginSubmitBtn");
+      const errorMsg = document.getElementById("loginErrorMsg");
+
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const user = userInput.value.trim();
+        const pass = passInput.value;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Authenticating with Supabase...";
+        errorMsg.style.display = "none";
+
+        try {
+          await handleLogin(user, pass);
+          showToast("Authentication successful! Redirecting to Dashboard...", "success");
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 400);
+        } catch (err) {
+          console.error("Login failure:", err);
+          errorMsg.textContent = err.message || "Invalid username or password. Please check your Supabase credentials.";
+          errorMsg.style.display = "block";
+          passInput.value = "";
+          passInput.focus();
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Sign In with Supabase Auth";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

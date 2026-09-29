@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Export Certificates - AXCES SEVEN EXIMS Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- SIDEBAR NAVIGATION -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-header">
+      <img src="../assets/images/logo.png" alt="AXCES SEVEN EXIMS Logo" class="sidebar-logo" onerror="this.src='../assets/images/moulika_logo.png'">
+      <div class="sidebar-brand-text">
+        <h2>AXCES SEVEN</h2>
+        <p>Export Admin</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-group-title">Main Navigation</div>
+      <a href="index.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>Dashboard</span>
+      </a>
+
+      <div class="nav-group-title">Catalog & Export</div>
+      <a href="products.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        <span>All Products</span>
+        <span class="sidebar-badge" id="sideProdCount">30</span>
+      </a>
+      <a href="products.html?type=food" class="sidebar-link" style="padding-left:28px;">
+        <span style="font-size:12px;">🥗 Food Products</span>
+        <span class="sidebar-badge" style="background:#e0f2fe; color:#0369a1;">15</span>
+      </a>
+      <a href="products.html?type=non-food" class="sidebar-link" style="padding-left:28px;">
+        <span style="font-size:12px;">📦 Non-Food Products</span>
+        <span class="sidebar-badge" style="background:#fae8ff; color:#86198f;">15</span>
+      </a>
+
+      <div class="nav-group-title">Leads & Operations</div>
+      <a href="inquiries.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>Export Inquiries</span>
+        <span class="sidebar-badge inquiry-new-count" style="background:#ef4444; color:#fff;">1</span>
+      </a>
+      <a href="facility.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        <span>Facility & Factory</span>
+      </a>
+      <a href="certificates.html" class="sidebar-link active">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        <span>Certifications</span>
+      </a>
+
+      <div class="nav-group-title">Configuration</div>
+      <a href="settings.html" class="sidebar-link">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Company Settings</span>
+      </a>
+      <a href="../index.html" target="_blank" class="sidebar-link" style="color:var(--admin-accent);">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        <span>View Live Website ↗</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">A</div>
+        <div class="user-info">
+          <div class="user-name">Admin User</div>
+          <div class="user-role">Super Admin</div>
+        </div>
+      </div>
+      <button class="btn-logout btn-logout-action" title="Log Out">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <main class="admin-main">
+    <!-- TOPBAR -->
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="page-breadcrumb">
+          <span>AXCES SEVEN EXIMS</span>
+          <span>/</span>
+          <span class="current">Export Certifications</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="btn btn-accent" id="btnOpenAddCert">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <span>+ Add Certificate</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="admin-content">
+      <div class="page-header">
+        <div class="page-header-title">
+          <h1>Export Accreditations & Certifications (3x2 Grid)</h1>
+          <p>Manage international export compliance certificates, licenses, and NABL laboratory reports.</p>
+        </div>
+      </div>
+
+      <!-- 3x2 CERTIFICATES GRID -->
+      <div class="cert-admin-grid" id="certGrid">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- EDIT / ADD CERTIFICATE MODAL -->
+  <div class="modal-backdrop" id="certModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title" id="certModalTitle">Edit Certificate</div>
+        <button class="modal-close" id="btnCloseCertModal">&times;</button>
+      </div>
+      <form id="certForm">
+        <div class="modal-body">
+          <input type="hidden" id="formCertId">
+
+          <div class="form-group">
+            <label class="form-label" for="formCertTitle">Certificate Name <span class="req">*</span></label>
+            <input type="text" id="formCertTitle" class="form-control" placeholder="e.g. GST or IEC Certificate" required>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="formCertRegNo">Registration / License Number</label>
+              <input type="text" id="formCertRegNo" class="form-control" placeholder="e.g. 33AAAAA0000A1Z5">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="formCertAuthority">Issuing Authority</label>
+              <input type="text" id="formCertAuthority" class="form-control" placeholder="e.g. Govt of India / DGFT">
+            </div>
+          </div>
+
+          <!-- IMAGE UPLOAD -->
+          <div class="form-group">
+            <label class="form-label">Certificate Document Image</label>
+            <div class="image-upload-wrap" id="certDropZone">
+              <img id="certImgPreview" class="upload-preview" src="../assets/images/cert-gst.jpg" alt="Preview">
+              <div id="certUploadPrompt">
+                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--admin-text-muted); margin-bottom:6px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <div style="font-size:12.5px; font-weight:600; color:var(--admin-primary);">Upload Certificate Image</div>
+              </div>
+              <input type="file" id="certImageFile" accept="image/*" style="display:none;">
+            </div>
+
+            <div style="margin-top:10px;">
+              <label class="form-label" style="font-size:11.5px; color:var(--admin-text-muted);">Or Choose Existing Preset:</label>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <span class="preset-chip btn-cert-preset" data-img="../assets/images/cert-gst.jpg">GST</span>
+                <span class="preset-chip btn-cert-preset" data-img="../assets/images/cert-msme.jpg">MSME</span>
+                <span class="preset-chip btn-cert-preset" data-img="../assets/images/cert-iec.jpg">IEC</span>
+                <span class="preset-chip btn-cert-preset" data-img="../assets/images/cert-fssai.jpg">FSSAI</span>
+                <span class="preset-chip btn-cert-preset" data-img="../assets/images/cert-adcode.jpg">AD Code</span>
+                <span class="preset-chip btn-cert-preset" data-img="../assets/images/cert-testreport.jpg">Test Report</span>
+              </div>
+              <input type="hidden" id="formCertImageUrl" value="../assets/images/cert-gst.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btnCancelCertModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Certificate</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async function() {
+      let cachedCerts = [];
+      const grid = document.getElementById("certGrid");
+      const modal = document.getElementById("certModal");
+      const form = document.getElementById("certForm");
+      const fileInput = document.getElementById("certImageFile");
+      const dropZone = document.getElementById("certDropZone");
+      const imgPreview = document.getElementById("certImgPreview");
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      async function loadCertificates() {
+        grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:32px; color:#64748b;">Loading certificates from Supabase...</div>`;
+        try {
+          cachedCerts = await window.AppSupabase.certificates.getAll();
+          renderCerts();
+        } catch (err) {
+          console.error("Certificates loading error:", err);
+          grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:32px; color:#ef4444;">Failed to load certificates.</div>`;
+        }
+      }
+
+      function renderCerts() {
+        grid.innerHTML = "";
+
+        if (cachedCerts.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:32px; color:#64748b;">No certificates found. Click "Add Certificate" to upload one.</div>`;
+          return;
+        }
+
+        cachedCerts.forEach((item) => {
+          const card = document.createElement("div");
+          card.className = "cert-admin-card";
+          card.innerHTML = `
+            <img src="${adminImgPath(item.image)}" alt="${item.title}" onerror="this.src='../assets/images/cert-gst.jpg'">
+            <div style="font-weight:700; color:var(--admin-primary); font-size:16px; margin-bottom:4px;">${item.title}</div>
+            <div style="font-size:12px; color:var(--admin-text-muted); margin-bottom:2px;">${item.reg_no || item.regNo || ''}</div>
+            <div style="font-size:11.5px; color:#10b981; font-weight:600; margin-bottom:14px;">✓ ${item.authority || 'Verified Export Credential'}</div>
+            <div style="display:flex; justify-content:center; gap:8px;">
+              <button class="btn btn-secondary btn-sm btn-edit-cert" data-id="${item.id}">Edit Details</button>
+              <button class="btn btn-danger btn-sm btn-del-cert" data-id="${item.id}">Delete</button>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        document.querySelectorAll(".btn-edit-cert").forEach(btn => {
+          btn.addEventListener("click", () => openEditModal(btn.getAttribute("data-id")));
+        });
+
+        document.querySelectorAll(".btn-del-cert").forEach(btn => {
+          btn.addEventListener("click", () => deleteCert(btn.getAttribute("data-id")));
+        });
+      }
+
+      dropZone.addEventListener("click", () => fileInput.click());
+      fileInput.addEventListener("change", function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(evt) {
+            imgPreview.src = evt.target.result;
+            imgPreview.classList.add("show");
+            document.getElementById("formCertImageUrl").value = evt.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      document.querySelectorAll(".btn-cert-preset").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const img = btn.getAttribute("data-img");
+          imgPreview.src = adminImgPath(img);
+          imgPreview.classList.add("show");
+          document.getElementById("formCertImageUrl").value = img;
+        });
+      });
+
+      function openEditModal(id) {
+        const item = cachedCerts.find(c => c.id === id);
+        if (!item) return;
+
+        document.getElementById("certModalTitle").textContent = `Edit Certificate: ${item.title}`;
+        document.getElementById("formCertId").value = item.id;
+        document.getElementById("formCertTitle").value = item.title;
+        document.getElementById("formCertRegNo").value = item.reg_no || item.regNo || "";
+        document.getElementById("formCertAuthority").value = item.authority || "";
+        document.getElementById("formCertImageUrl").value = item.image;
+        imgPreview.src = adminImgPath(item.image);
+        imgPreview.classList.add("show");
+
+        modal.classList.add("active");
+      }
+
+      function openAddModal() {
+        form.reset();
+        document.getElementById("certModalTitle").textContent = "Add Export Certificate";
+        document.getElementById("formCertId").value = "";
+        const defaultImg = "assets/images/cert-gst.jpg";
+        document.getElementById("formCertImageUrl").value = defaultImg;
+        imgPreview.src = adminImgPath(defaultImg);
+        imgPreview.classList.add("show");
+        modal.classList.add("active");
+      }
+
+      async function deleteCert(id) {
+        if (confirm("Are you sure you want to delete this certificate from Supabase?")) {
+          try {
+            await window.AppSupabase.certificates.delete(id);
+            showToast("Certificate removed.", "info");
+            await loadCertificates();
+          } catch (err) {
+            console.error("Delete certificate error:", err);
+            showToast(`Failed to delete certificate: ${err.message}`, "error");
+          }
+        }
+      }
+
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const id = document.getElementById("formCertId").value || `CERT-${Date.now().toString().slice(-4)}`;
+        const title = document.getElementById("formCertTitle").value.trim();
+        const reg_no = document.getElementById("formCertRegNo").value.trim();
+        const authority = document.getElementById("formCertAuthority").value.trim();
+        const image = document.getElementById("formCertImageUrl").value || "assets/images/cert-gst.jpg";
+
+        const origBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Saving to Supabase...";
+
+        try {
+          await window.AppSupabase.certificates.save({
+            id,
+            title,
+            reg_no,
+            authority,
+            image,
+            display_order: cachedCerts.length + 1
+          });
+          showToast(`Certificate "${title}" saved to Supabase!`, "success");
+          modal.classList.remove("active");
+          await loadCertificates();
+        } catch (err) {
+          console.error("Save certificate error:", err);
+          showToast(`Failed to save certificate: ${err.message}`, "error");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = origBtnText;
+        }
+      });
+
+      document.getElementById("btnOpenAddCert").addEventListener("click", openAddModal);
+      document.getElementById("btnCloseCertModal").addEventListener("click", () => modal.classList.remove("active"));
+      document.getElementById("btnCancelCertModal").addEventListener("click", () => modal.classList.remove("active"));
+
+      await loadCertificates();
+    });
+  </script>
+</body>
+</html>
